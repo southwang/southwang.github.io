@@ -177,8 +177,8 @@ body{
 }
 #close{
 	position: absolute;
-	top: calc(1% + 20px);
-	right: 1%;
+	top: 5%;
+	right: 5%;
 	display: block;
 	z-index: 99;
 	box-shadow: 0 0 5px black;

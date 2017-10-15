@@ -20,10 +20,11 @@ function changeImage(imgName){
 	}
 
 	$tar.attr("id",imgName);
-	$("#image img").remove();
-	$("#image").append($tar);
-	var temp = parseInt($(".image").css("width")) / 2 + 1; // +1 修复小数点不精确导致的白边问题
-	$(".btn button").css("width",temp);
+	var $img = $("#image");
+    $img.find("img").remove();
+    $img.append($tar);
+	var temp = parseInt($img.css("width")) / 2 + 1; // +1 修复小数点不精确导致的白边问题
+	$(".btn").find("button").css("width",temp);
 }
 
 function switchDisplayByClass(target){
@@ -62,18 +63,19 @@ function switchImages(x){
 }
 
 function showMessage(msg){
-	$("#msg p").text(msg);
-	$("#msg").fadeIn(200);
+    var $msg = $("#msg");
+    $msg.find("p").text(msg);
+    $msg.fadeIn(200);
 	setTimeout(function(){
-		$("#msg").fadeOut(200);
+        $msg.fadeOut(200);
 	},500);
 }
 
 $().ready(function(){
+    var $show = $(".show");
 	$(document).keyup(function(event){
 		switch(event.keyCode) {
 			case 27:
-				var $show = $(".show");
                 $show.addClass("hide");
                 $show.fadeOut(100);
 				break;
@@ -93,7 +95,7 @@ $().ready(function(){
 	$("#next").on("click",function(){
 		switchImages(1);
 	});
-	$(".show").on("DOMMouseScroll mousewheel",function(e){
+    $show.on("DOMMouseScroll mousewheel",function(e){
 		var temp = (e.originalEvent.detail && e.originalEvent.detail > 0 ? "down":"up")
 					|| (e.originalEvent.wheelData && e.originalEvent.wheelData < 0 ? "down":"up");
 		switch(temp){
@@ -113,4 +115,21 @@ $().ready(function(){
         $show.addClass("hide");
         $show.fadeOut(100);
 	});
+
+	// for smart phone
+	// only need left/right switch
+	var startX,endX,result;
+    $show.on("touchstart", function (e) {
+		startX = e.originalEvent.targetTouches[0].pageX;
+    });
+    $show.on("touchend", function (e) {
+		endX = e.originalEvent.changedTouches[0].pageX;
+		result = startX - endX;
+		if (result > 0) {
+            switchImages(1);
+		} else if (result < 0) {
+            switchImages(-1);
+		}
+    });
+
 });
