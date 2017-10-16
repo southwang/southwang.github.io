@@ -119,10 +119,11 @@ $().ready(function(){
 	// for smart phone
 	// only need left/right switch
 	var startX,endX,result;
-    $show.on("touchstart", function (e) {
+	var $image = $(".image");
+    $image.on("touchstart", function (e) {
 		startX = e.originalEvent.targetTouches[0].pageX;
     });
-    $show.on("touchend", function (e) {
+    $image.on("touchend", function (e) {
 		endX = e.originalEvent.changedTouches[0].pageX;
 		result = startX - endX;
 		if (result > 0) {
