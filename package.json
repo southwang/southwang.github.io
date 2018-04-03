@@ -1,5 +1,5 @@
 {
-  "name": "temp",
+  "name": "southwang",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,9 +11,14 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "flow": "flow init",
+    "eslint": "eslint --init"
   },
   "devDependencies": {
-    "eslint": "^4.19.1"
+    "babel-eslint": "^8.2.2",
+    "eslint": "^4.19.1",
+    "eslint-plugin-react": "^7.7.0",
+    "flow-bin": "^0.69.0"
   }
 }
