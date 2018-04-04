@@ -1,7 +1,6 @@
 /* 页面头部 */
 
 .banner {
-  height: 770px;
   justify-content: center;
   align-items: center;
   background-size: 100%;
@@ -12,6 +11,5 @@
 }
 
 .title {
-  font-size: 15rem;
   font-weight: bold;
 }

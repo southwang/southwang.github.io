@@ -9,12 +9,48 @@ import Config from './config'
 import './App.css';
 
 
-export default class App extends Component<{}> {
+type Props = {
+
+}
+
+type State = {
+  sight: SightType,
+  contents: ContentsType,
+  shoes: ShoesType,
+}
+
+type SightType = {
+  bannerImage: string,
+  navRatio: number,
+  bannerRatio: number,
+  fontRatio: number,
+  subAreaRatio: number,
+}
+
+type ContentsType = {
+  backgroundImage: string,
+}
+
+type ShoesType = {
+
+}
+
+export default class App extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      sight: Config.sight,
+      contents: Config.contents,
+      shoes: {},
+    }
+  }
+
+
   render() {
     return (
       <div className="container">
-        <Sight bannerImage={Config.bannerImage} />
-        <Contents backgroundImage={Config.backgroundImage} />
+        <Sight {...this.state.sight} />
+        <Contents backgroundImage={this.state.contents.backgroundImage} />
         <Shoes />
       </div>
     );

@@ -12,10 +12,6 @@ body {
   flex-direction: column;
 }
 
-.sight {
-  height: 840px;
-}
-
 /* 通用CSS */
 
 .flex-normal {
