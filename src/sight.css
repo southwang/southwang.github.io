@@ -1,8 +1,6 @@
 /* 页面头部 */
 
 .banner {
-  justify-content: center;
-  align-items: center;
   background-size: 100%;
 }
 
@@ -12,4 +10,33 @@
 
 .title {
   font-weight: bold;
+}
+
+.sub-area {
+  position: absolute;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  align-self: flex-end;
+}
+
+.about {
+  width: 10%;
+  background-color: #ea68a2;
+  font-size: 12px;
+}
+
+.search {
+  width: 25%;
+  margin-right: auto;
+}
+
+.search input {
+  width: 70%;
+  border: 1px solid #ea68a2;
+  border-radius: 10px;
+  background-color: #b9546c;
+  padding: 1px 8px;
+  padding-right: 15px;
+  outline: none;
+  -webkit-appearance: none;
 }

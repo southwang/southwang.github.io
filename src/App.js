@@ -50,7 +50,7 @@ export default class App extends Component<Props, State> {
     return (
       <div className="container">
         <Sight {...this.state.sight} />
-        <Contents backgroundImage={this.state.contents.backgroundImage} />
+        <Contents {...this.state.contents} />
         <Shoes />
       </div>
     );
