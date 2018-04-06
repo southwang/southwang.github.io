@@ -1,2 +1,3 @@
-# southwang.github.io
-存放学习过程中的作品，并为了更进一步地学习web。
+# SouthWang Blog
+
+学习成果，以及作品展示。
