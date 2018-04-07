@@ -6,16 +6,23 @@ import React from 'react';
 import './contents.css';
 
 type Props = {
-  backgroundImage: string
+  backgroundImage: string,
+  article: Array<{
+    [string] : string,
+  }>,
 }
 
 export default class Contents extends React.Component<Props> {
   render() {
     return (
-      <div style={{
-        backgroundImage: `url(${this.props.backgroundImage})`
-      }}>
-        Contents
+      <div className="background-color flex-normal article-container" >
+        {
+          this.props.article.map(a => (
+            <div key={a.url} className="article" >
+              <div></div>
+            </div>
+          ))
+        }
       </div>
     );
   }

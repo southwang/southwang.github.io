@@ -1,0 +1,41 @@
+/* 页面脚部 */
+
+.shoes {
+  background-color: #ebebeb;
+  height: 280px;
+}
+
+.summary {
+  padding-left: 60px;
+  padding: 60px;
+}
+
+.count-info {
+  padding-top: 50px;
+}
+
+.contact {
+  padding-right: 60px;
+  color: black;
+  text-decoration: none;
+  padding-top: 140px;
+}
+
+.count {
+  display: inline-block;
+  height: 38px;
+  width: 38px;
+  text-align: center;
+  line-height: 38px;
+  border-radius: 29px;
+  margin: 0 24px;
+  font-size: 18px;
+}
+
+.draw {
+  background-color: #f2626c;
+}
+
+.ps {
+  background-color: #1cdcdc;
+}

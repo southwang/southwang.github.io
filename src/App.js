@@ -6,8 +6,21 @@ import Sight from './sight';
 import Contents from './contents';
 import Shoes from './shoes';
 import Config from './config'
+import Article from './article';
 import './App.css';
 
+
+type SightType = {
+  bannerImage: string,
+}
+
+type ContentsType = {
+  backgroundImage: string,
+}
+
+type ShoesType = {
+  mailtoSubject: string,
+}
 
 type Props = {
 
@@ -17,22 +30,11 @@ type State = {
   sight: SightType,
   contents: ContentsType,
   shoes: ShoesType,
-}
-
-type SightType = {
-  bannerImage: string,
-  navRatio: number,
-  bannerRatio: number,
-  fontRatio: number,
-  subAreaRatio: number,
-}
-
-type ContentsType = {
-  backgroundImage: string,
-}
-
-type ShoesType = {
-
+  drawCoung: number,
+  psCount: number,
+  article: Array<{
+    [string] : string,
+  }>,
 }
 
 export default class App extends Component<Props, State> {
@@ -41,7 +43,10 @@ export default class App extends Component<Props, State> {
     this.state = {
       sight: Config.sight,
       contents: Config.contents,
-      shoes: {},
+      shoes: Config.shoes,
+      article: Article,
+      drawCoung: 0,
+      psCount: 0,
     }
   }
 
@@ -50,8 +55,11 @@ export default class App extends Component<Props, State> {
     return (
       <div className="container">
         <Sight {...this.state.sight} />
-        <Contents {...this.state.contents} />
-        <Shoes />
+        <Contents {...this.state.contents}
+          article={this.state.article} />
+        <Shoes {...this.state.shoes}
+          drawCount={this.state.drawCoung}
+          psCount={this.state.psCount} />
       </div>
     );
   }
