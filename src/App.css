@@ -16,6 +16,54 @@ body {
   flex-direction: column;
 }
 
+.container {
+  position: relative;
+  left: 0;
+}
+
+.mask {
+  height: 100%;
+  width: 0;
+  position: absolute;
+  background-color: rgba(0, 0, 0, .7);
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+
+.about-body {
+  position: fixed;
+  height: 100%;
+}
+
+.about-body.show {
+  right: 0;
+}
+
+
+.container.offset {
+  left: -100%;
+}
+
+.about-body.hide {
+  right: -100%;
+}
+
+.about-body {
+  width: 100%;
+}
+
+@media screen and (min-width: 400px) {
+  .container.offset {
+    left: -400px;
+  }
+  .about-body.hide {
+    right: -400px;
+  }
+  .about-body {
+    width: 400px;
+  }
+}
+
 /* 通用CSS */
 
 .flex-normal {
@@ -26,8 +74,12 @@ body {
   color: white;
 }
 
+.font-gray {
+  color: gray;
+}
+
 .background-color {
-  background-color: #b9546c;
+  background-color: #f3f3f3;
 }
 
 .flex-hv-center {
@@ -43,6 +95,30 @@ body {
   align-items: center;
 }
 
+.self-center {
+  align-self: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .mr-auto {
   margin-right: auto;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.shadow {
+  box-shadow: 0 0 55px black;
+}
+
+.transition {
+  transition: all .2s ease;
 }

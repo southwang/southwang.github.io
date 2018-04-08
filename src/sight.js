@@ -3,16 +3,26 @@
 
 import React from 'react';
 import './sight.css';
+import title from './img/title.jpg';
+import logo from './img/logo.jpg';
 
 
-function Navigation() {
+/**
+ * 生成导航
+ * @param {*} props 
+ */
+function Navigation(props: {
+  handleAboutClick: () => void,
+}) {
   return (
     <div className="nav background-color flex-normal" >
 
-      <div className="flex-normal flex-hv-center mr-auto logo font-white" >
-        假装有 LOGO
+      <div className="flex-normal flex-v-center logo font-white" >
+        <img src={logo} alt="logo" />
       </div>
-      <div className="about font-white flex-normal flex-hv-center" >
+      <div className="m-auto nav-title" >SOUTHWANG</div>
+      <div className="about font-white flex-normal flex-hv-center"
+        onClick={props.handleAboutClick} >
         ABOUT ME
       </div>
 
@@ -20,14 +30,21 @@ function Navigation() {
   );
 }
 
-function Banner(props: {bannerImage: string}) {
+/**
+ * 生成Banner
+ * @param {*} props 
+ */
+function Banner(props: {
+  bannerImage: string,
+}) {
   return (
-    <div className="banner flex-normal flex-hv-center" style={{
+    <div className="banner flex-normal flex-hv-center transition" style={{
       backgroundImage: `url(${props.bannerImage})`,
     }} >
 
       <div className="title font-white" >
-        假装有标题
+        <img className="title-img" src={title} alt="title" />
+        <div className="small-title font-white" >MINAMI</div>
       </div>
 
       <div className="sub-area" />
@@ -38,11 +55,15 @@ function Banner(props: {bannerImage: string}) {
 
 type Props = {
   bannerImage: string,
+  handleAboutClick: () => void,
 }
 
 type State = {
 }
 
+/**
+ * 生成页面头部
+ */
 export default class Sight extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
@@ -54,7 +75,7 @@ export default class Sight extends React.Component<Props, State> {
     return (
       <div className="sight flex-column" >
 
-        <Navigation />
+        <Navigation handleAboutClick={this.props.handleAboutClick} />
         <Banner bannerImage={this.props.bannerImage} />
 
       </div>

@@ -1,7 +1,7 @@
 /* 页面头部 */
 
 .banner {
-  height: 560px;
+  height: 328px;
   background-size: cover;
   background-position: center;
 }
@@ -11,13 +11,19 @@
 }
 
 .title {
-  font-weight: bold;
-  font-size: 8em;
-  text-shadow: 0 0 15px black;
+  height: 125px;
+  transform: translate3d(0,-25px,0);
+  max-width: 100%;
+  line-height: 328px;
+}
+
+.title img {
+  max-height: 100%;
+  max-width: 100%;
 }
 
 .sub-area {
-  height: 60px;
+  height: 50px;
   position: absolute;
   width: 100%;
   background: rgba(255, 255, 255, 0.3);
@@ -25,7 +31,7 @@
 }
 
 .about {
-  width: 190px;
+  width: 115px;
   background-color: #fc7878;
   font-size: 12px;
   cursor: pointer;
@@ -36,21 +42,71 @@
 }
 
 .logo {
-  padding-left: 30px;
+  width: 115px;
 }
 
-/* .search {
-  width: 25%;
-  margin-right: auto;
-} */
+.logo img {
+  height: 25px;
+  padding-left: 45px;
+}
 
-/* .search input {
-  width: 70%;
-  border: 1px solid #ea68a2;
-  border-radius: 10px;
-  background-color: #b9546c;
-  padding: 1px 8px;
-  padding-right: 15px;
-  outline: none;
-  -webkit-appearance: none;
-} */
+.nav-title {
+  font-weight: bold;
+  font-size: 18px;
+  display: none;
+}
+
+.small-title {
+  display: none;
+}
+
+@media screen and (max-width: 424px) {
+  .logo {
+    margin-right: auto;
+  }
+  .title {
+    height: auto;
+  }
+  .title-img {
+    display: none;
+  }
+  .small-title {
+    font-size: 70px; 
+    font-weight: bold;
+    display: block;
+  }
+}
+
+@media screen and (min-width: 425px) {
+  .nav-title {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .banner {
+    height: 400px;
+  }
+  .title {
+    height: 300px;
+    line-height: 328px;
+  }
+  .about,
+  .logo {
+    width: 115px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .banner {
+    height: 550px;
+  }
+  .title {
+    height: 350px;
+    line-height: 550px;
+  }
+  .about,
+  .logo {
+    width: 190px;
+  }
+}

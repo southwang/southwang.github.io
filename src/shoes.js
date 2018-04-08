@@ -4,6 +4,7 @@
 import React from 'react';
 
 import './shoes.css';
+import logo from './img/logo.jpg';
 
 type Props = {
   mailtoSubject: string,
@@ -11,6 +12,9 @@ type Props = {
   psCount: number,
 }
 
+/**
+ * 生成页面脚部
+ */
 export default class Shoes extends React.Component<Props> {
   render() {
     return (
@@ -21,11 +25,12 @@ export default class Shoes extends React.Component<Props> {
             <div>手绘</div><span className="count draw font-white" >{this.props.drawCount}</span>
             <div>PS习作</div><span className="count ps font-white" >{this.props.psCount}</span>
           </div>
+          <a className="contact" 
+            href={`mailto:MinamiAnami@outlook.com?subject=${this.props.mailtoSubject}`} >
+            联系我ヽ(●´∀`●)ﾉ MinamiAnami@outlook.com
+          </a>
         </div>
-        <a className="contact" 
-          href={`mailto:MinamiAnami@outlook.com?subject=${this.props.mailtoSubject}`} >
-          联系我 MinamiAnami@outlook.com
-        </a>
+        <img className="shoes-logo" src={logo} alt="logo" />
       </div>
     );
   }
