@@ -45,9 +45,11 @@ function Articles(props: {
           range(props.showCount).map(a => (
             <div key={props.items[a].id} className="article transition" 
               onClick={() => props.handleArticleClick(props.items[a].id)} >
-              <div className="img transition" style={{
-                backgroundImage: `url(${props.items[a].url})`
-              }} ></div>
+              <div className="img-container" >
+                <div className="img transition" style={{
+                  backgroundImage: `url(${props.items[a].url})`
+                }} ><div className="img-mask transition" /></div>
+              </div>
               <div className="article-title" >{props.items[a].title}</div>
               <div className="article-intro" >{props.items[a].intro}</div>              
             </div>
@@ -58,9 +60,9 @@ function Articles(props: {
         props.showCount >= props.items.length
           ? <div className="load-more font-gray" >没有更多了(¦3[▓▓]	</div>
           : (
-          <div className="load-more avaliable"
+          <div className="load-more avaliable transition"
             onClick={() => props.handleLoadMore(props.subTitle)} >
-            加载更多(:3[___]=
+            点击加载更多(:3[___]=
           </div>
         )
       }

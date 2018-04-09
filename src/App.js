@@ -8,6 +8,7 @@ import Shoes from './shoes';
 import Config from './config'
 import Article from './article';
 import About from './about';
+import title from './img/title.jpg';
 import './App.css';
 
 
@@ -44,6 +45,7 @@ type State = {
   contents: ContentsType,
   shoes: ShoesType,
   about: AboutType,
+  title: string, // title 图片
 
   showAbout: boolean, // about me 显示 flag
 
@@ -83,6 +85,7 @@ export default class App extends Component<Props, State> {
       contents: Config.contents,
       shoes: Config.shoes,
       about: Config.about,
+      title: title,
       article: a,
       drawArticle: drawArticle,
       drawCat: cat1,
@@ -111,7 +114,8 @@ export default class App extends Component<Props, State> {
       } >
       
         <Sight {...this.state.sight} 
-          handleAboutClick={this.handleAboutClick.bind(this)} />
+          handleAboutClick={this.handleAboutClick.bind(this)}
+          title={this.state.title} />
 
         <Contents {...this.state.contents}
           article={this.state.article}

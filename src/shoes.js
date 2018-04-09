@@ -4,7 +4,7 @@
 import React from 'react';
 
 import './shoes.css';
-import logo from './img/logo.jpg';
+import logo from './img/logo-l.svg';
 
 type Props = {
   mailtoSubject: string,

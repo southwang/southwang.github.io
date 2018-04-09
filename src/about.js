@@ -2,7 +2,7 @@
 // About me
 
 import React from 'react';
-import logo from './img/logo.jpg';
+import logo from './img/logo-l.svg';
 
 import './about.css';
 

@@ -3,8 +3,7 @@
 
 import React from 'react';
 import './sight.css';
-import title from './img/title.jpg';
-import logo from './img/logo.jpg';
+import logo from './img/logo.svg';
 
 
 /**
@@ -21,7 +20,7 @@ function Navigation(props: {
         <img src={logo} alt="logo" />
       </div>
       <div className="m-auto nav-title" >SOUTHWANG</div>
-      <div className="about font-white flex-normal flex-hv-center"
+      <div className="about font-white flex-normal flex-hv-center transition"
         onClick={props.handleAboutClick} >
         ABOUT ME
       </div>
@@ -36,18 +35,22 @@ function Navigation(props: {
  */
 function Banner(props: {
   bannerImage: string,
+  title: string,
 }) {
   return (
     <div className="banner flex-normal flex-hv-center transition" style={{
       backgroundImage: `url(${props.bannerImage})`,
     }} >
 
-      <div className="title font-white" >
-        <img className="title-img" src={title} alt="title" />
+      <div className="title font-white transition" >
+        <img className="title-img" src={props.title} alt="title" />
         <div className="small-title font-white" >MINAMI</div>
       </div>
 
-      <div className="sub-area" />
+      <div className="sub-area flex-normal flex-hv-center" >
+        <div className="o active" />
+        <div className="o" />
+      </div>
 
     </div>
   );
@@ -56,6 +59,7 @@ function Banner(props: {
 type Props = {
   bannerImage: string,
   handleAboutClick: () => void,
+  title: string,
 }
 
 type State = {
@@ -76,7 +80,8 @@ export default class Sight extends React.Component<Props, State> {
       <div className="sight flex-column" >
 
         <Navigation handleAboutClick={this.props.handleAboutClick} />
-        <Banner bannerImage={this.props.bannerImage} />
+        <Banner bannerImage={this.props.bannerImage}
+          title={this.props.title} />
 
       </div>
     );

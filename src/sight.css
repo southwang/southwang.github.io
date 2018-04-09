@@ -53,14 +53,33 @@
 .nav-title {
   font-weight: bold;
   font-size: 18px;
-  display: none;
 }
 
 .small-title {
   display: none;
 }
 
-@media screen and (max-width: 424px) {
+.o {
+  height: 25px;
+  border-radius: 12.5px;
+  width: 25px;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: inline-block;
+}
+
+.o:first-child {
+  margin-right: 15px;
+}
+
+.o.active {
+  background-color: white;
+  width: 60px;
+}
+
+@media screen and (max-width: 559px) {
+  .nav-title {
+    display: none;
+  }
   .logo {
     margin-right: auto;
   }
@@ -73,12 +92,6 @@
   .small-title {
     font-size: 70px; 
     font-weight: bold;
-    display: block;
-  }
-}
-
-@media screen and (min-width: 425px) {
-  .nav-title {
     display: block;
   }
 }

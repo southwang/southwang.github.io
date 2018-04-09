@@ -19,11 +19,37 @@
   font-size: 14px;
 }
 
-.img {
+.img,
+.img-container {
   width: 360px;
   height: 200px;
+}
+
+.article,
+.img-container {
+  overflow: hidden;
+}
+
+.img {
   background-size: cover;
   background-position: center;
+}
+
+.img:hover {
+  transform: scale(1.1);
+}
+
+.img-mask {
+  background-color: transparent;
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.img-container:hover .img-mask {
+  background-color: rgba(0, 0, 0, .3)
 }
 
 /* 点击显示大图 */
@@ -100,7 +126,7 @@
 .section {
   line-height: 30px;
   height: 30px;
-  margin-left: 15px;
+  margin-left: 5px;
   font-weight: bold;
 }
 
@@ -109,7 +135,14 @@
   width: 360px;
 }
 
-@media screen and (max-width: 424px) {
+@media screen and (max-width: 359px) {
+  .single,
+  .project {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 459px) {
   .section {
     font-size: 16px;
   }
@@ -126,12 +159,46 @@
   }
 }
 
+@media screen and (min-width: 460px) {
+  .article {
+    height: 399px;
+    width: 430px;
+  }
+  .img-container,
+  .img {
+    width: 430px;
+    height: 309px;
+  }
+  .single,
+  .project {
+    width: 430px;
+  }
+  .sub-title,
+  .section {
+    margin-left: 0;
+  }
+  .section {
+    font-size: 24px;
+  }
+  .sub-title {
+    font-size: 18px;
+  }
+  .article-title,
+  .article-intro {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 560px) {
+}
+
 @media screen and (min-width: 768px) {
   .article {
     margin: 0 15px 50px 15px;
     height: 236px;
     width: 217px;
   }
+  .img-container,
   .img {
     width: 217px;
     height: 156px;
@@ -157,6 +224,7 @@
     height: 290px;
     width: 278px;
   }
+  .img-container,
   .img {
     width: 278px;
     height: 200px;
@@ -179,9 +247,10 @@
 @media screen and (min-width: 1200px) {
   .article {
     margin: 0 7px 70px 7px;
-    height: 345px;
+    height: 330px;
     width: 280px;
   }
+  .img-container,
   .img {
     width: 280px;
     height: 245px;
@@ -194,7 +263,7 @@
   .section {
     line-height: 70px;
     height: 70px;
-    margin-left: 25px;
+    margin-left: 7px;
   }
   .load-more {
     margin-right: 25px;
