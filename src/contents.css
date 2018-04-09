@@ -190,6 +190,29 @@
 }
 
 @media screen and (min-width: 560px) {
+  .article {
+    margin: 0 10px 50px 10px;
+    height: 260px;
+    width: 250px;
+  }
+  .img-container,
+  .img {
+    width: 250px;
+    height: 175px;
+  }
+  .single,
+  .project {
+    width: 540px;
+  }
+  .sub-title,
+  .section {
+    line-height: 50px;
+    height: 50px;
+    margin-left: 15px;
+  }
+  .load-more {
+    margin-right: 15px;
+  }
 }
 
 @media screen and (min-width: 768px) {
