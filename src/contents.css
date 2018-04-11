@@ -207,6 +207,18 @@
 }
 
 @media screen and (min-width: 460px) {
+  .project-item {
+    height: auto;
+    flex-wrap: wrap;
+  }
+  .project-img-container,
+  .project-img {
+    width: 430px;
+    height: 250px;
+  }
+  .project {
+    margin: 30px 0;
+  }
   .article {
     height: 399px;
     width: 430px;
