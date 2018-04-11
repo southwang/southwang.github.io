@@ -70,6 +70,10 @@ body {
   display: flex;
 }
 
+.back-white {
+  background-color: white;
+}
+
 .font-white {
   color: white;
 }
@@ -117,6 +121,10 @@ body {
 
 .shadow {
   box-shadow: 0 0 55px black;
+}
+
+.light-shadow {
+  box-shadow: 0 0 1px #ddd;
 }
 
 .transition {

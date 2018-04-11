@@ -4,6 +4,14 @@
   align-items: center;
 }
 
+.project-item {
+  width: 100%;
+}
+
+.project-img-container {
+  flex: 0 0 auto;
+}
+
 .sub-title {
   line-height: 70px;
   height: 70px;
@@ -14,7 +22,6 @@
   margin-bottom: 30px;
   height: 260px;
   width: 360px;
-  background-color: white;
   position: relative;
   font-size: 14px;
 }
@@ -25,16 +32,20 @@
   height: 200px;
 }
 
+.project-img-container,
+.project-item,
 .article,
 .img-container {
   overflow: hidden;
 }
 
+.project-img,
 .img {
   background-size: cover;
   background-position: center;
 }
 
+.project-img:hover,
 .img:hover {
   transform: scale(1.1);
 }
@@ -48,8 +59,24 @@
   width: 100%;
 }
 
+.project-img:hover .img-mask,
 .img-container:hover .img-mask {
   background-color: rgba(0, 0, 0, .3)
+}
+
+.project-intro {
+  margin: 1em 1em;
+}
+
+.project-title {
+  font-weight: bold;
+  line-height: 3em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.project-description {
+  line-height: 2em;
 }
 
 /* 点击显示大图 */
@@ -64,6 +91,14 @@
   top: 0;
   background-color: #000000cc;
   text-align: center;
+  transition: opacity .3s ease;
+  display: none!important;
+  opacity: 0;
+}
+
+.show-pic.show {
+  display: flex!important;
+  opacity: 1;
 }
 
 .pic-container {
@@ -143,6 +178,18 @@
 }
 
 @media screen and (max-width: 459px) {
+  .project-item {
+    height: auto;
+    flex-wrap: wrap;
+  }
+  .project-img-container,
+  .project-img {
+    width: 360px;
+    height: 200px;
+  }
+  .project {
+    margin: 30px 0;
+  }
   .section {
     font-size: 16px;
   }
@@ -190,9 +237,54 @@
 }
 
 @media screen and (min-width: 560px) {
+  .project-item {
+    height: 200px;
+  }
+  .project-img-container,
+  .project-img {
+    width: 210px;
+    height: 100%;
+  }
+  .project {
+    margin: 70px 0;
+  }
+  .article {
+    margin: 0 10px 50px 10px;
+    height: 260px;
+    width: 250px;
+  }
+  .img-container,
+  .img {
+    width: 250px;
+    height: 175px;
+  }
+  .single,
+  .project {
+    width: 540px;
+  }
+  .sub-title,
+  .section {
+    line-height: 50px;
+    height: 50px;
+    margin-left: 15px;
+  }
+  .load-more {
+    margin-right: 15px;
+  }
 }
 
 @media screen and (min-width: 768px) {
+  .project-item {
+    height: 201px;
+  }
+  .project-img-container,
+  .project-img {
+    width: 280px;
+    height: 100%;
+  }
+  .project {
+    margin: 50px 0;
+  }
   .article {
     margin: 0 15px 50px 15px;
     height: 236px;
@@ -245,6 +337,17 @@
 }
 
 @media screen and (min-width: 1200px) {
+  .project-item {
+    height: 255px;
+  }
+  .project-img-container,
+  .project-img {
+    width: 452px;
+    height: 100%;
+  }
+  .project {
+    margin: 70px 0;
+  }
   .article {
     margin: 0 7px 70px 7px;
     height: 330px;

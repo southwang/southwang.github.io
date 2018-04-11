@@ -10,11 +10,14 @@ type articleType = {
   [string]: string | number,
 }
 
+type projectType = articleType;
+
 type Props = {
   backgroundImage: string,
   article: Array<articleType>,
   drawArticle: Array<articleType>,
   psArticle: Array<articleType>,
+  project: Array<projectType>,
   drawCat: string,
   psCat: string,
 }
@@ -43,7 +46,8 @@ function Articles(props: {
       <div className="flex-normal flex-wrap article-list" >
         {
           range(props.showCount).map(a => (
-            <div key={props.items[a].id} className="article transition" 
+            <div key={props.items[a].id}
+              className="article transition back-white light-shadow"
               onClick={() => props.handleArticleClick(props.items[a].id)} >
               <div className="img-container" >
                 <div className="img transition" style={{
@@ -51,7 +55,7 @@ function Articles(props: {
                 }} ><div className="img-mask transition" /></div>
               </div>
               <div className="article-title" >{props.items[a].title}</div>
-              <div className="article-intro" >{props.items[a].intro}</div>              
+              <div className="article-intro" >{props.items[a].intro}</div>
             </div>
           ))
         }
@@ -60,13 +64,13 @@ function Articles(props: {
         props.showCount >= props.items.length
           ? <div className="load-more font-gray" >没有更多了(¦3[▓▓]	</div>
           : (
-          <div className="load-more avaliable transition"
-            onClick={() => props.handleLoadMore(props.subTitle)} >
-            点击加载更多(:3[___]=
+            <div className="load-more avaliable transition"
+              onClick={() => props.handleLoadMore(props.subTitle)} >
+              点击加载更多(:3[___]=
           </div>
-        )
+          )
       }
-      
+
     </div>
   );
 }
@@ -81,9 +85,9 @@ export default class Contents extends React.Component<Props, State> {
     this.state = {
       show: false,
       showItem: this.props.article[0],
-      drawShowCount: 8 > props.drawArticle.length 
+      drawShowCount: 8 > props.drawArticle.length
         ? props.drawArticle.length : 8, // 默认显示8个项目
-      psShowCount: 8 > props.psArticle.length 
+      psShowCount: 8 > props.psArticle.length
         ? props.psArticle.length : 8, // 默认显示8个项目
     }
   }
@@ -108,7 +112,7 @@ export default class Contents extends React.Component<Props, State> {
   handleMaskClick() {
     this.setState({ show: false });
   }
-  
+
   /**
    * 加载更多
    * @param {*} category 目录
@@ -130,40 +134,58 @@ export default class Contents extends React.Component<Props, State> {
   render() {
     return (
       <div className="background-color flex-column contents" >
+        {/* 项目设计展示 */}
         <div className="flex-column project" >
           <div className="section" >{'项目设计(施工中)'}</div>
-          
+          {
+            this.props.project.map(p => (
+              <div key={p.id}
+                className="project-item back-white light-shadow flex-normal" >
+                <div className="project-img-container" >
+                  <div className="project-img transition"
+                    style={{
+                      backgroundImage: `url(${p.cover})`,
+                    }} ><div className="img-mask transition" /></div>
+                </div>
+                <div className="project-intro" >
+                    <div className="project-title" >{p.title}</div>
+                    <div className="project-description" >{p.description}</div>
+                </div>
+              </div>
+            ))
+          }
         </div>
+        {/* 作品展示 */}
         <div className="flex-column single" >
           <div className="section" >{'作品展示'}</div>
-          <Articles items={this.props.drawArticle} 
+          <Articles items={this.props.drawArticle}
             handleArticleClick={this.handleArticleClick.bind(this)}
             handleLoadMore={this.handleLoadMore.bind(this)}
             showCount={this.state.drawShowCount}
             subTitle={this.props.drawCat} />
-          <Articles items={this.props.psArticle} 
+          <Articles items={this.props.psArticle}
             handleArticleClick={this.handleArticleClick.bind(this)}
             handleLoadMore={this.handleLoadMore.bind(this)}
             showCount={this.state.psShowCount}
-            subTitle={this.props.psCat} />       
+            subTitle={this.props.psCat} />
         </div>
         {/* 点击放大 */}
-        <div className="show-pic full flex-column flex-v-center"
-          style={{
-            display: this.state.show ? "flex" : "none",
-          }}
+        <div className={
+          "show-pic full flex-column flex-v-center "
+          + (this.state.show ? "show" : "hide")
+        }
           onClick={this.handleMaskClick.bind(this)} >
           {/* 图片显示 */}
           <div className="pic-container flex-normal flex-v-center" >
-            <img className="pic shadow font-white" 
-              alt={this.state.showItem.title} 
+            <img className="pic shadow font-white"
+              alt={this.state.showItem.title}
               src={this.state.showItem.url}
               style={{
-                maxHeight: document.documentElement 
+                maxHeight: document.documentElement
                   ? `${document.documentElement.clientHeight - 75}px`
                   : "100%",
               }} ></img>
-            </div>
+          </div>
           {/* 详细显示 */}
           <div className="desc font-white" >
             <div>{this.state.showItem.title}</div>

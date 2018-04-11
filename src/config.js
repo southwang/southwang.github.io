@@ -1,10 +1,20 @@
 /* @flow */
 
+import title1 from './img/title.jpg';
+import title2 from './img/title2.png';
+
 
 var config = {
   // 页面头部设定
   "sight": {
-    "bannerImage": "http://wx3.sinaimg.cn/large/65f02d4egy1fq0xx9v7t6j21hc0lek9t.jpg",
+    "bannerImage": [
+      "http://wx3.sinaimg.cn/large/65f02d4egy1fq0xx9v7t6j21hc0lek9t.jpg",
+      "http://wx4.sinaimg.cn/large/65f02d4egy1fq6wail9vjj20xc0fmx08.jpg",
+    ],
+    "title": [
+      title1,
+      title2,
+    ],
   },
   // 页面主体
   "contents": {

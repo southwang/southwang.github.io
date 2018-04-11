@@ -7,13 +7,14 @@ import Contents from './contents';
 import Shoes from './shoes';
 import Config from './config'
 import Article from './article';
+import Project from './project';
 import About from './about';
-import title from './img/title.jpg';
 import './App.css';
 
 
 type SightType = {
-  bannerImage: string,
+  bannerImage: Array<string>,
+  title: Array<string>,
 }
 
 type ContentsType = {
@@ -40,12 +41,13 @@ type articleType ={
   [string] : string | number,
 }
 
+type projectType = articleType;
+
 type State = {
   sight: SightType,
   contents: ContentsType,
   shoes: ShoesType,
   about: AboutType,
-  title: string, // title 图片
 
   showAbout: boolean, // about me 显示 flag
 
@@ -55,6 +57,8 @@ type State = {
   article: Array<articleType>, // 所有作品
   drawArticle: Array<articleType>, // 手绘作品列表
   psArticle: Array<articleType>, // 电脑作品列表
+
+  project: Array<projectType>, // 项目设计作品
 
   drawCat: string, // 手绘目录名
   psCat: string, // 电脑作品目录名
@@ -74,10 +78,16 @@ export default class App extends Component<Props, State> {
 
     // 筛选各目录下的项目
     const drawArticle = a.filter(a => {
-      if (a.category === cat1) return a;
+      return a.category === cat1;
     });
     const psArticle = a.filter(a => {
-      if (a.category === cat2) return a;
+      return a.category === cat2;
+    });
+
+    // 给项目设计加唯一 id
+    const p = Project.map((p, i) => {
+      p.id = i;
+      return p;
     });
 
     this.state = {
@@ -85,11 +95,11 @@ export default class App extends Component<Props, State> {
       contents: Config.contents,
       shoes: Config.shoes,
       about: Config.about,
-      title: title,
       article: a,
       drawArticle: drawArticle,
       drawCat: cat1,
       psArticle: psArticle,
+      project: p,
       psCat: cat2,
       drawCoung: drawArticle.length,
       psCount: psArticle.length,
@@ -114,10 +124,10 @@ export default class App extends Component<Props, State> {
       } >
       
         <Sight {...this.state.sight} 
-          handleAboutClick={this.handleAboutClick.bind(this)}
-          title={this.state.title} />
+          handleAboutClick={this.handleAboutClick.bind(this)}/>
 
         <Contents {...this.state.contents}
+          project={this.state.project}
           article={this.state.article}
           drawArticle={this.state.drawArticle}
           psArticle={this.state.psArticle}
