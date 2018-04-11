@@ -250,6 +250,7 @@
 
 @media screen and (min-width: 560px) {
   .project-item {
+    flex-wrap: nowrap;
     height: 200px;
   }
   .project-img-container,
