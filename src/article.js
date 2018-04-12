@@ -1,6 +1,76 @@
 export default
   [
     {
+      "url": "http://wx1.sinaimg.cn/large/65f02d4egy1fq4km4afdaj20u01404qp.jpg",
+      "title": "驴啊 donkey",
+      "intro": "一头驴",
+      "description": "一头无辜的驴",
+      "category": "铅笔手绘"
+    },
+    {
+      "url": "http://wx3.sinaimg.cn/large/65f02d4egy1fqaauzfz7kj20xc0ci493.jpg",
+      "title": "用素材拼的banner",
+      "intro": "用素材拼的banner",
+      "description": "果然找素材就是耗时间。",
+      "category": "PS练习系列"
+    },
+    {
+      "url": "http://wx2.sinaimg.cn/large/65f02d4egy1fqaauvno41j20xc0ciqdj.jpg",
+      "title": "用素材拼的banner",
+      "intro": "用素材拼的banner",
+      "description": "果然找素材就是耗时间。",
+      "category": "PS练习系列"
+    },
+    {
+      "url": "http://wx2.sinaimg.cn/large/65f02d4egy1fqaauy4xb8j20xc0cie6g.jpg",
+      "title": "用素材拼的banner",
+      "intro": "用素材拼的banner",
+      "description": "果然找素材就是耗时间。",
+      "category": "PS练习系列"
+    },
+    {
+      "url": "http://wx3.sinaimg.cn/large/65f02d4egy1fqaav0pxpgj20tc08kqf2.jpg",
+      "title": "一款小清新包包的banner",
+      "intro": "一款小清新包包的banner，色调和素材可以体现清爽夏日的感觉。",
+      "description": "一款小清新包包的banner，色调和素材可以体现清爽夏日的感觉。",
+      "category": "PS练习系列"
+    },
+    {
+      "url": "http://wx2.sinaimg.cn/large/65f02d4egy1fqaav2lj2jj20tc0jnqij.jpg",
+      "title": "一款商用礼品袋的设计",
+      "intro": "一款商用礼品袋的设计，运用了企业相关元素来做图案设计。",
+      "description": "一款商用礼品袋的设计，运用了企业相关元素来做图案设计，体现了企业主题文化。",
+      "category": "PS练习系列"
+    },
+    {
+      "url": "http://wx1.sinaimg.cn/large/65f02d4egy1fqaav4ctmbj20tc08larq.jpg",
+      "title": "一个家电品牌的banner",
+      "intro": "banner运用的元素是优雅的女性，传统的梅花画与古典的底纹，让人对产品产生一种可靠稳定高档的感觉。",
+      "description": "banner运用的元素是优雅的女性，传统的梅花画与古典的底纹，让人对产品产生一种可靠稳定高档的感觉。",
+      "category": "PS练习系列"
+    },
+    {
+      "url": "http://wx2.sinaimg.cn/large/65f02d4egy1fqaav8sz7yj219u0akqp5.jpg",
+      "title": "一款手表banner的设计",
+      "intro": "深蓝色的色调高端大气，又华丽。",
+      "description": "深蓝色的色调高端大气，又华丽。",
+      "category": "PS练习系列"
+    },
+    {
+      "url": "http://wx3.sinaimg.cn/large/65f02d4egy1fqaav6kt7gj20ks0tcngo.jpg",
+      "title": "模仿苹果手机的图标",
+      "intro": "模仿苹果手机的图标，用AI画出来的。",
+      "description": "模仿苹果手机的图标，用AI画出来的。",
+      "category": "PS练习系列"
+    },
+    {
+      "url": "http://wx3.sinaimg.cn/large/65f02d4egy1fqaavap95jj20tc08kqil.jpg",
+      "title": "游戏banner的设计",
+      "intro": "绚丽的暖色调与强烈的光影对比，突出战争场面的激烈",
+      "description": "绚丽的暖色调与强烈的光影对比，突出战争场面的激烈。",
+      "category": "PS练习系列"
+    },
+    {
       "url": "http://wx4.sinaimg.cn/large/65f02d4egy1fq4kmb6v2qj20u01407fr.jpg",
       "title": "此生无悔入夏目，来世愿作账中妖",
       "intro": "猫咪老师和夏目",
@@ -86,37 +156,37 @@ export default
     },
     {
       "url": "http://wx4.sinaimg.cn/large/65f02d4egy1fq4kmfjmv7j212w1ju4ki.jpg",
-      "title": "模仿的个人网站页面设计",
-      "intro": "根据网上课程进行的模仿，其中细节有一些改动",
-      "description": "根据网上课程进行的模仿，其中细节有一些改动",
+      "title": "个人网站页面设计",
+      "intro": "模仿的个人网站页面设计，其中细节有一些改动",
+      "description": "模仿的个人网站页面设计，其中细节有一些改动",
       "category": "PS练习系列"
     },
     {
       "url": "http://wx1.sinaimg.cn/large/65f02d4egy1fq4kn2y2z1j212w0sgkj2.jpg",
-      "title": "模仿的网站页面设计",
-      "intro": "根据网上课程进行的模仿，个人觉得这个网站并不好看，但还是借鉴（照抄）下来了",
-      "description": "根据网上课程进行的模仿，个人觉得这个网站并不好看，但还是借鉴（照抄）下来了",
+      "title": "网站页面设计",
+      "intro": "模仿的网站页面设计，个人觉得这个网站并不好看，但还是借鉴（照抄）下来了",
+      "description": "模仿的网站页面设计，个人觉得这个网站并不好看，但还是借鉴（照抄）下来了",
       "category": "PS练习系列"
     },
     {
       "url": "http://wx4.sinaimg.cn/large/65f02d4egy1fq4kmhjdb5j212w0jgqq6.jpg",
-      "title": "模仿的网站页面设计",
-      "intro": "根据网上课程进行的模仿，改了一些细节",
-      "description": "根据网上课程进行的模仿，改了一些细节",
+      "title": "网站页面设计",
+      "intro": "模仿的网站页面设计，改了一些细节",
+      "description": "模仿的网站页面设计，改了一些细节",
       "category": "PS练习系列"
     },
     {
       "url": "http://wx1.sinaimg.cn/large/65f02d4egy1fq4klggvgej212w0jgdxw.jpg",
       "title": "网站的内页面",
-      "intro": "根据网上课程进行的模仿，改了一些细节",
-      "description": "根据网上课程进行的模仿，改了一些细节",
+      "intro": "模仿的网站页面设计",
+      "description": "模仿的网站页面设计",
       "category": "PS练习系列"
     },
     {
       "url": "http://wx1.sinaimg.cn/large/65f02d4egy1fq4klhtxagj212w0jggxi.jpg",
       "title": "网站的加载页面",
-      "intro": "根据网上课程进行的模仿，改了一些细节",
-      "description": "根据网上课程进行的模仿，改了一些细节",
+      "intro": "模仿的网站加载页面设计，改了一些细节",
+      "description": "模仿的网站加载页面设计，改了一些细节",
       "category": "PS练习系列"
     },
     {
