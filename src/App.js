@@ -1,6 +1,7 @@
 /* @flow */
 
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 
 import Sight from './sight';
 import Contents from './contents';
@@ -37,8 +38,8 @@ type Props = {
 
 }
 
-type articleType ={
-  [string] : string | number,
+type articleType = {
+  [string]: string | number,
 }
 
 type projectType = articleType;
@@ -118,21 +119,26 @@ export default class App extends Component<Props, State> {
   }
 
   render() {
+
+    const ContentsWrapper = () => (
+      <Contents {...this.state.contents}
+      project={this.state.project}
+      article={this.state.article}
+      drawArticle={this.state.drawArticle}
+      psArticle={this.state.psArticle}
+      drawCat={this.state.drawCat}
+      psCat={this.state.psCat} />
+    );
+
     return (
       <div className={
         "container transition " + (this.state.showAbout ? 'offset' : '')
       } >
-      
-        <Sight {...this.state.sight} 
-          handleAboutClick={this.handleAboutClick.bind(this)}/>
 
-        <Contents {...this.state.contents}
-          project={this.state.project}
-          article={this.state.article}
-          drawArticle={this.state.drawArticle}
-          psArticle={this.state.psArticle}
-          drawCat={this.state.drawCat}
-          psCat={this.state.psCat} />
+        <Sight {...this.state.sight}
+          handleAboutClick={this.handleAboutClick.bind(this)} />
+
+        <Route exact path="/" component={ContentsWrapper} />
 
         <Shoes {...this.state.shoes}
           drawCount={this.state.drawCoung}
@@ -141,14 +147,10 @@ export default class App extends Component<Props, State> {
         <div className={
           "about-body transition flex-normal flex-hv-center "
           + (this.state.showAbout ? 'show' : 'hide')
-          }
-          onClick={this.handleAboutClick.bind(this)} >
-          
+          } onClick={this.handleAboutClick.bind(this)} >
           <About {...this.state.about}
             mailtoSubject={this.state.shoes.mailtoSubject} />
-
         </div>
-
         <div className="mask"
           style={{
             width: this.state.showAbout ? '100%' : '0',

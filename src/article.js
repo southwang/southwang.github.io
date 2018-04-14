@@ -71,6 +71,13 @@ export default
       "category": "PS练习系列"
     },
     {
+      "url": "http://wx3.sinaimg.cn/large/65f02d4egy1fq4km9ud8aj21400u0kjl.jpg",
+      "title": "早上好！",
+      "intro": "逝去的童年之梦",
+      "description": "小时候很羡慕童话里的世界，也曾梦想拥有与万物交流的能力，长大后方知童话里都是骗人的，人与人有时不能很好地交流呢",
+      "category": "铅笔手绘"
+    },
+    {
       "url": "http://wx4.sinaimg.cn/large/65f02d4egy1fq4kmb6v2qj20u01407fr.jpg",
       "title": "此生无悔入夏目，来世愿作账中妖",
       "intro": "猫咪老师和夏目",
@@ -117,13 +124,6 @@ export default
       "title": "风车",
       "intro": "哪一个才是真实？或许假象更擅长掩饰",
       "description": "哪一个才是真实？或许假象更擅长掩饰",
-      "category": "铅笔手绘"
-    },
-    {
-      "url": "http://wx3.sinaimg.cn/large/65f02d4egy1fq4km9ud8aj21400u0kjl.jpg",
-      "title": "早上好！",
-      "intro": "逝去的童年之梦",
-      "description": "小时候很羡慕童话里的世界，也曾梦想拥有与万物交流的能力，长大后方知童话里都是骗人的，人与人有时不能很好地交流呢",
       "category": "铅笔手绘"
     },
     {
