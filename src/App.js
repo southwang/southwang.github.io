@@ -130,6 +130,13 @@ export default class App extends Component<Props, State> {
       psCat={this.state.psCat} />
     );
 
+    // base url 
+    // github pages 上根目录为 build
+    const baseURL = (
+      window.location.host === 'southwang.github.io'
+      ? Config.baseURL : '/'
+    );
+
     return (
       <div className={
         "container transition " + (this.state.showAbout ? 'offset' : '')
@@ -138,7 +145,7 @@ export default class App extends Component<Props, State> {
         <Sight {...this.state.sight}
           handleAboutClick={this.handleAboutClick.bind(this)} />
 
-        <Route exact path="/" component={ContentsWrapper} />
+        <Route exact path={baseURL} component={ContentsWrapper} />
 
         <Shoes {...this.state.shoes}
           drawCount={this.state.drawCoung}

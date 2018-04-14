@@ -5,6 +5,8 @@ import title2 from './img/title2.png';
 
 
 var config = {
+  // base path
+  "baseURL": "/build/",
   // 页面头部设定
   "sight": {
     "bannerImage": [
