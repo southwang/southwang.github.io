@@ -21,6 +21,7 @@ var config = {
   // 页面主体
   "contents": {
     "backgroundImage": "http://wx2.sinaimg.cn/large/65f02d4egy1fpzuimr623j21hc1ree21.jpg",
+    "projectFooterImage": "https://wx3.sinaimg.cn/large/65f02d4egy1fqcdjpjmsij20ca04fwg2.jpg",
   },
   // 页面脚部
   "shoes": {

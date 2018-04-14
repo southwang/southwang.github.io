@@ -4,6 +4,13 @@
   align-items: center;
 }
 
+a,
+.article {
+  color: #333;
+  text-decoration: none;
+  outline: none;
+}
+
 .project-item {
   width: 100%;
 }
@@ -259,7 +266,7 @@
     height: 100%;
   }
   .project {
-    margin: 70px 0;
+    margin: 50px 0;
   }
   .article {
     margin: 0 10px 50px 10px;
@@ -359,7 +366,7 @@
     height: 100%;
   }
   .project {
-    margin: 70px 0;
+    margin: 50px 0;
   }
   .article {
     margin: 0 7px 70px 7px;

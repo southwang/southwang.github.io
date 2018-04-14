@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
+import { find } from 'lodash';
 
 import Sight from './sight';
 import Contents from './contents';
@@ -10,6 +11,7 @@ import Config from './config'
 import Article from './article';
 import Project from './project';
 import About from './about';
+import ProjectPages from './projectPages';
 import './App.css';
 
 
@@ -20,6 +22,7 @@ type SightType = {
 
 type ContentsType = {
   backgroundImage: string,
+  projectFooterImage: string,
 }
 
 type ShoesType = {
@@ -75,7 +78,7 @@ export default class App extends Component<Props, State> {
       return a;
     });
     // 定义目录名称
-    const [cat1, cat2] = ['铅笔手绘', 'PS练习系列'];
+    const [cat1, cat2] = ['铅笔手绘', '设计作品'];
 
     // 筛选各目录下的项目
     const drawArticle = a.filter(a => {
@@ -120,48 +123,62 @@ export default class App extends Component<Props, State> {
 
   render() {
 
-    const ContentsWrapper = () => (
-      <Contents {...this.state.contents}
-      project={this.state.project}
-      article={this.state.article}
-      drawArticle={this.state.drawArticle}
-      psArticle={this.state.psArticle}
-      drawCat={this.state.drawCat}
-      psCat={this.state.psCat} />
-    );
-
     // base url 
     // github pages 上根目录为 build
     const baseURL = (
       window.location.host === 'southwang.github.io'
-      ? Config.baseURL : '/'
+        ? Config.baseURL : '/'
     );
+
+    const {
+      sight, contents, shoes, about, article, drawArticle, drawCat,
+      psArticle, project, psCat, drawCoung, psCount, showAbout
+    } = this.state;
 
     return (
       <div className={
-        "container transition " + (this.state.showAbout ? 'offset' : '')
+        "container transition " + (showAbout ? 'offset' : '')
       } >
 
-        <Sight {...this.state.sight}
-          handleAboutClick={this.handleAboutClick.bind(this)} />
+        <Sight {...sight}
+          handleAboutClick={this.handleAboutClick.bind(this)}
+          baseURL={baseURL} />
 
-        <Route exact path={baseURL} component={ContentsWrapper} />
+        <Route exact path={baseURL} render={() => (
+          <Contents {...contents}
+            project={project}
+            article={article}
+            drawArticle={drawArticle}
+            psArticle={psArticle}
+            drawCat={drawCat}
+            psCat={psCat}
+            baseURL={baseURL} />
+        )} />
 
-        <Shoes {...this.state.shoes}
-          drawCount={this.state.drawCoung}
-          psCount={this.state.psCount} />
+        <Route path={`${baseURL}:project`} render={({ match }) => {
+          const p = find(project, ["name", match.params.project]);
+          return (
+          <ProjectPages project={p ? p : { name: "404" }} 
+            baseURL={baseURL}
+            projectFooterImage={contents.projectFooterImage} />
+        )
+        }} />
+
+        <Shoes {...shoes}
+          drawCount={drawCoung}
+          psCount={psCount} />
 
         <div className={
           "about-body transition flex-normal flex-hv-center "
-          + (this.state.showAbout ? 'show' : 'hide')
-          } onClick={this.handleAboutClick.bind(this)} >
-          <About {...this.state.about}
-            mailtoSubject={this.state.shoes.mailtoSubject} />
+          + (showAbout ? 'show' : 'hide')
+        } onClick={this.handleAboutClick.bind(this)} >
+          <About {...about}
+            mailtoSubject={shoes.mailtoSubject} />
         </div>
         <div className="mask"
           style={{
-            width: this.state.showAbout ? '100%' : '0',
-            opacity: this.state.showAbout ? '1' : '0'
+            width: showAbout ? '100%' : '0',
+            opacity: showAbout ? '1' : '0'
           }}
           onClick={this.handleMaskClick.bind(this)} />
 

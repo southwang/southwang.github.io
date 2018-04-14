@@ -4,6 +4,7 @@
 import React from 'react';
 import { range } from 'lodash';
 import { Spring } from 'react-spring';
+import { Link } from 'react-router-dom';
 import './sight.css';
 import logo from './img/logo.svg';
 
@@ -14,13 +15,14 @@ import logo from './img/logo.svg';
  */
 function Navigation(props: {
   handleAboutClick: () => void,
+  baseURL: string,
 }) {
   return (
-    <div className="nav background-color flex-normal" >
+    <div className="nav font-white flex-normal" >
 
-      <div className="flex-normal flex-v-center logo font-white" >
+      <Link to={props.baseURL} className="flex-normal flex-v-center logo font-white" >
         <img src={logo} alt="logo" />
-      </div>
+      </Link>
       <div className="m-auto nav-title" >SOUTHWANG</div>
       <div className="about font-white flex-normal flex-hv-center transition"
         onClick={props.handleAboutClick} >
@@ -157,6 +159,7 @@ type Props = {
   bannerImage: Array<string>,
   handleAboutClick: () => void,
   title: Array<string>,
+  baseURL: string,
 }
 
 type State = {
@@ -173,12 +176,17 @@ export default class Sight extends React.Component<Props, State> {
   }
 
   render() {
+
+    const {
+      bannerImage, title, baseURL
+    } = this.props;
+
     return (
       <div className="sight flex-column" >
 
-        <Navigation handleAboutClick={this.props.handleAboutClick} />
-        <Banner bannerImage={this.props.bannerImage}
-          title={this.props.title} />
+        <Navigation baseURL={baseURL}
+          handleAboutClick={this.props.handleAboutClick} />
+        <Banner bannerImage={bannerImage} title={title} />
 
       </div>
     );

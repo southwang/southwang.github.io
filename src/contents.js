@@ -3,6 +3,8 @@
 
 import React from 'react';
 import { range } from 'lodash';
+import { Link } from 'react-router-dom';
+import { Transition, config } from 'react-spring';
 
 import './contents.css';
 
@@ -20,6 +22,7 @@ type Props = {
   project: Array<projectType>,
   drawCat: string,
   psCat: string,
+  baseURL: string,
 }
 
 type State = {
@@ -71,6 +74,38 @@ function Articles(props: {
           )
       }
 
+    </div>
+  );
+}
+
+/**
+ * 生成项目设计项目
+ * @param {*} props 
+ */
+function Projects(props: {
+  project: Array<projectType>,
+}) {
+  return (
+    <div className="flex-column project" >
+      <div className="section" >{'项目设计'}</div>
+      {
+        props.project.map(p => (
+          <Link to={p.name} key={p.id} >
+            <div className="project-item back-white light-shadow flex-normal" >
+              <div className="project-img-container" >
+                <div className="project-img transition"
+                  style={{
+                    backgroundImage: `url(${p.cover})`,
+                  }} ><div className="img-mask transition" /></div>
+              </div>
+              <div className="project-intro" >
+                <div className="project-title" >{p.title}</div>
+                <div className="project-description" >{p.description}</div>
+              </div>
+            </div>
+          </Link>
+        ))
+      }
     </div>
   );
 }
@@ -132,68 +167,69 @@ export default class Contents extends React.Component<Props, State> {
   }
 
   render() {
-    return (
-      <div className="background-color flex-column contents" >
-        {/* 项目设计展示 */}
-        <div className="flex-column project" >
-          <div className="section" >{'项目设计(施工中)'}</div>
-          {
-            this.props.project.map(p => (
-              <div key={p.id}
-                className="project-item back-white light-shadow flex-normal" >
-                <div className="project-img-container" >
-                  <div className="project-img transition"
-                    style={{
-                      backgroundImage: `url(${p.cover})`,
-                    }} ><div className="img-mask transition" /></div>
-                </div>
-                <div className="project-intro" >
-                    <div className="project-title" >{p.title}</div>
-                    <div className="project-description" >{p.description}</div>
-                </div>
-              </div>
-            ))
-          }
-        </div>
-        {/* 作品展示 */}
-        <div className="flex-column single" >
-          <div className="section" >{'作品展示'}</div>
-          <Articles items={this.props.drawArticle}
-            handleArticleClick={this.handleArticleClick.bind(this)}
-            handleLoadMore={this.handleLoadMore.bind(this)}
-            showCount={this.state.drawShowCount}
-            subTitle={this.props.drawCat} />
-          <Articles items={this.props.psArticle}
-            handleArticleClick={this.handleArticleClick.bind(this)}
-            handleLoadMore={this.handleLoadMore.bind(this)}
-            showCount={this.state.psShowCount}
-            subTitle={this.props.psCat} />
-        </div>
-        {/* 点击放大 */}
-        <div className={
-          "show-pic full flex-column flex-v-center "
-          + (this.state.show ? "show" : "hide")
-        }
-          onClick={this.handleMaskClick.bind(this)} >
-          {/* 图片显示 */}
-          <div className="pic-container flex-normal flex-v-center" >
-            <img className="pic shadow font-white"
-              alt={this.state.showItem.title}
-              src={this.state.showItem.url}
-              style={{
-                maxHeight: document.documentElement
-                  ? `${document.documentElement.clientHeight - 75}px`
-                  : "100%",
-              }} ></img>
-          </div>
-          {/* 详细显示 */}
-          <div className="desc font-white" >
-            <div>{this.state.showItem.title}</div>
-            <div>{this.state.showItem.description}</div>
-          </div>
-        </div>
 
-      </div>
+    const {
+      project, baseURL, psArticle, psCat, drawArticle, drawCat
+    } = this.props;
+    const {
+      psShowCount, drawShowCount, show, showItem
+    } = this.state;
+
+    const ArticlesWrapper = (props) => (
+      <Articles items={props.items}
+        handleArticleClick={this.handleArticleClick.bind(this)}
+        handleLoadMore={this.handleLoadMore.bind(this)}
+        showCount={props.showCount}
+        subTitle={props.subTitle} />
+    );
+
+    return (
+      <Transition from={{ opacity: 0 }}
+        enter={{ opacity: 1 }}
+        leave={{ opacity: 0 }}
+        config={config.gentle} >
+        {
+          styles => (
+          <div className="background-color flex-column contents"
+            style={{ ...styles }} >
+            {/* 项目设计展示 */}
+            <Projects project={project} baseURL={baseURL} />
+            {/* 作品展示 */}
+            <div className="flex-column single" >
+              <div className="section" >{'作品展示'}</div>
+              <ArticlesWrapper items={psArticle}
+                showCount={psShowCount}
+                subTitle={psCat} />
+              <ArticlesWrapper items={drawArticle}
+                showCount={drawShowCount}
+                subTitle={drawCat} />
+            </div>
+            {/* 点击放大 */}
+            <div className={
+              `show-pic full flex-column flex-v-center ${(show ? "show" : "hide")}`
+            } onClick={this.handleMaskClick.bind(this)} >
+              {/* 图片显示 */}
+              <div className="pic-container flex-normal flex-v-center" >
+                <img className="pic shadow font-white"
+                  alt={showItem.title}
+                  src={showItem.url}
+                  style={{
+                    maxHeight: document.documentElement
+                      ? `${document.documentElement.clientHeight - 75}px`
+                      : "100%",
+                  }} ></img>
+              </div>
+              {/* 详细显示 */}
+              <div className="desc font-white" >
+                <div>{showItem.title}</div>
+                <div>{showItem.description}</div>
+              </div>
+            </div>
+
+          </div>
+          )
+        }
+      </Transition>
     );
   }
 }
