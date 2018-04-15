@@ -22,8 +22,8 @@ export default class Shoes extends React.Component<Props> {
         <div className="summary mr-auto" >
           <div>东隅已逝，桑榆非晚。最好的学习时机就是现在。</div>
           <div className="flex-normal flex-v-center count-info" >
-            <div>手绘</div><span className="count draw font-white" >{this.props.drawCount}</span>
-            <div>PS习作</div><span className="count ps font-white" >{this.props.psCount}</span>
+            <div>设计作品</div><span className="count ps font-white" >{this.props.psCount}</span>
+            <div>铅笔手绘</div><span className="count draw font-white" >{this.props.drawCount}</span>
           </div>
           <a className="contact" 
             href={`mailto:MinamiAnami@outlook.com?subject=${this.props.mailtoSubject}`} >

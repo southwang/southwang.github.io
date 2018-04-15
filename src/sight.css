@@ -61,9 +61,17 @@
   width: 115px;
 }
 
-.logo img {
+.logo svg {
   height: 25px;
   padding-left: 45px;
+}
+
+.logo-svg {
+  fill: white;
+}
+
+.logo:hover .logo-svg {
+  fill: #fb3b3b;
 }
 
 .nav-title {

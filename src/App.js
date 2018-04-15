@@ -158,7 +158,11 @@ export default class App extends Component<Props, State> {
         <Route path={`${baseURL}:project`} render={({ match }) => {
           const p = find(project, ["name", match.params.project]);
           return (
-          <ProjectPages project={p ? p : { name: "404" }} 
+          <ProjectPages project={
+              p ? p : {
+                name: "404",
+                content: "# 404 你来到了没有知识的荒原！",
+            }} 
             baseURL={baseURL}
             projectFooterImage={contents.projectFooterImage} />
         )
