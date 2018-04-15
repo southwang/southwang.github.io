@@ -4,7 +4,8 @@
 import React from 'react';
 import { range } from 'lodash';
 import { Link } from 'react-router-dom';
-import { Transition, config } from 'react-spring';
+import { Spring, config } from 'react-spring';
+import ScrollToTop from './scrollToTop';
 
 import './contents.css';
 
@@ -184,14 +185,14 @@ export default class Contents extends React.Component<Props, State> {
     );
 
     return (
-      <Transition from={{ opacity: 0 }}
-        enter={{ opacity: 1 }}
-        leave={{ opacity: 0 }}
+      <Spring from={{ opacity: 0 }}
+        to={{ opacity: 1 }}
         config={config.gentle} >
         {
           styles => (
           <div className="background-color flex-column contents"
             style={{ ...styles }} >
+            <ScrollToTop />
             {/* 项目设计展示 */}
             <Projects project={project} baseURL={baseURL} />
             {/* 作品展示 */}
@@ -229,7 +230,7 @@ export default class Contents extends React.Component<Props, State> {
           </div>
           )
         }
-      </Transition>
+      </Spring>
     );
   }
 }
