@@ -4,7 +4,7 @@
 import React from 'react';
 import { range } from 'lodash';
 import { Link } from 'react-router-dom';
-import { Spring, config } from 'react-spring';
+import { Transition, Spring, config } from 'react-spring';
 import ScrollToTop from './scrollToTop';
 
 import './contents.css';
@@ -190,44 +190,57 @@ export default class Contents extends React.Component<Props, State> {
         config={config.gentle} >
         {
           styles => (
-          <div className="background-color flex-column contents"
-            style={{ ...styles }} >
-            <ScrollToTop />
-            {/* 项目设计展示 */}
-            <Projects project={project} baseURL={baseURL} />
-            {/* 作品展示 */}
-            <div className="flex-column single" >
-              <div className="section" >{'作品展示'}</div>
-              <ArticlesWrapper items={psArticle}
-                showCount={psShowCount}
-                subTitle={psCat} />
-              <ArticlesWrapper items={drawArticle}
-                showCount={drawShowCount}
-                subTitle={drawCat} />
-            </div>
-            {/* 点击放大 */}
-            <div className={
-              `show-pic full flex-column flex-v-center ${(show ? "show" : "hide")}`
-            } onClick={this.handleMaskClick.bind(this)} >
-              {/* 图片显示 */}
-              <div className="pic-container flex-normal flex-v-center" >
-                <img className="pic shadow font-white"
-                  alt={showItem.title}
-                  src={showItem.url}
-                  style={{
-                    maxHeight: document.documentElement
-                      ? `${document.documentElement.clientHeight - 75}px`
-                      : "100%",
-                  }} ></img>
+            <div className="background-color flex-column contents"
+              style={{ ...styles }} >
+              <ScrollToTop />
+              {/* 项目设计展示 */}
+              <Projects project={project} baseURL={baseURL} />
+              {/* 作品展示 */}
+              <div className="flex-column single" >
+                <div className="section" >{'作品展示'}</div>
+                <ArticlesWrapper items={psArticle}
+                  showCount={psShowCount}
+                  subTitle={psCat} />
+                <ArticlesWrapper items={drawArticle}
+                  showCount={drawShowCount}
+                  subTitle={drawCat} />
               </div>
-              {/* 详细显示 */}
-              <div className="desc font-white" >
-                <div>{showItem.title}</div>
-                <div>{showItem.description}</div>
-              </div>
-            </div>
+              {/* 点击放大 */}
+              {show
+                ? (
+                  <Transition from={{ opacity: 0 }}
+                    enter={{ opacity: 1 }}
+                    leave={{ opacity: 0 }}
+                    config={{ tension: 10, friction: 10 }} >
+                    {styles => (
+                      <div className={
+                        'show-pic full flex-column flex-v-center show'
+                      } onClick={this.handleMaskClick.bind(this)}
+                        style={{ ...styles }} >
+                        {/* 图片显示 */}
+                        <div className="pic-container flex-normal flex-v-center" >
+                          <img className="pic shadow font-white"
+                            alt={showItem.title}
+                            src={showItem.url}
+                            style={{
+                              maxHeight: document.documentElement
+                                ? `${document.documentElement.clientHeight - 75}px`
+                                : "100%",
+                            }} ></img>
+                        </div>
+                        {/* 详细显示 */}
+                        <div className="desc font-white" >
+                          <div>{showItem.title}</div>
+                          <div>{showItem.description}</div>
+                        </div>
+                      </div>
+                    )
+                    }
+                  </Transition>
+                ) : null
+              }
 
-          </div>
+            </div>
           )
         }
       </Spring>
