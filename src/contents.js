@@ -184,13 +184,15 @@ export default class Contents extends React.Component<Props, State> {
         subTitle={props.subTitle} />
     );
 
+    const mobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent);
+
     return (
       <Spring from={{ opacity: 0 }}
         to={{ opacity: 1 }}
         config={config.gentle} >
         {
           styles => (
-            <div className="background-color flex-column contents"
+            <div className={`background-color flex-column contents ${mobile ? '' : 'desk'}`}
               style={{ ...styles }} >
               <ScrollToTop />
               {/* 项目设计展示 */}
@@ -206,40 +208,37 @@ export default class Contents extends React.Component<Props, State> {
                   subTitle={drawCat} />
               </div>
               {/* 点击放大 */}
-              {show
-                ? (
-                  <Transition from={{ opacity: 0 }}
-                    enter={{ opacity: 1 }}
-                    leave={{ opacity: 0 }}
-                    config={{ tension: 10, friction: 10 }} >
-                    {styles => (
-                      <div className={
-                        'show-pic full flex-column flex-v-center show'
-                      } onClick={this.handleMaskClick.bind(this)}
-                        style={{ ...styles }} >
-                        {/* 图片显示 */}
-                        <div className="pic-container flex-normal flex-v-center" >
-                          <img className="pic shadow font-white"
-                            alt={showItem.title}
-                            src={showItem.url}
-                            style={{
-                              maxHeight: document.documentElement
-                                ? `${document.documentElement.clientHeight - 75}px`
-                                : "100%",
-                            }} ></img>
-                        </div>
-                        {/* 详细显示 */}
-                        <div className="desc font-white" >
-                          <div>{showItem.title}</div>
-                          <div>{showItem.description}</div>
-                        </div>
+              <Transition from={{ opacity: 0 }}
+                enter={{ opacity: 1 }}
+                leave={{ opacity: 0 }}
+                config={{ tension: 100, friction: 10 }}
+                key={new Date().getTime()} >
+                {show
+                  ? styles => (
+                    <div className={
+                      'show-pic full flex-column flex-v-center t3d'
+                    } onClick={this.handleMaskClick.bind(this)}
+                      style={{ ...styles }} >
+                      {/* 图片显示 */}
+                      <div className="pic-container flex-normal flex-v-center" >
+                        <img className="pic shadow font-white"
+                          alt={showItem.title}
+                          src={showItem.url}
+                          style={{
+                            maxHeight: document.documentElement
+                              ? `${document.documentElement.clientHeight - 75}px`
+                              : "100%",
+                          }} ></img>
                       </div>
-                    )
-                    }
-                  </Transition>
-                ) : null
-              }
-
+                      {/* 详细显示 */}
+                      <div className="desc font-white" >
+                        <div>{showItem.title}</div>
+                        <div>{showItem.description}</div>
+                      </div>
+                    </div>
+                  ) : () => null
+                }
+              </Transition>
             </div>
           )
         }
