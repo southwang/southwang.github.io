@@ -4,7 +4,7 @@
 import React from 'react';
 import { range } from 'lodash';
 import { Link } from 'react-router-dom';
-import { Transition, Spring, config } from 'react-spring';
+import { Spring, config, animated } from 'react-spring';
 import ScrollToTop from './scrollToTop';
 
 import './contents.css';
@@ -208,14 +208,12 @@ export default class Contents extends React.Component<Props, State> {
                   subTitle={drawCat} />
               </div>
               {/* 点击放大 */}
-              <Transition from={{ opacity: 0 }}
-                enter={{ opacity: 1 }}
-                leave={{ opacity: 0 }}
-                config={{ tension: 100, friction: 10 }}
-                key={new Date().getTime()} >
-                {show
-                  ? styles => (
-                    <div className={
+              {show ? (
+                <Spring from={{ opacity: 0 }}
+                  to={{ opacity: 1 }} native
+                  config={{ tension: 5, friction: 10 }}>
+                  {styles => (
+                    <animated.div className={
                       'show-pic full flex-column flex-v-center t3d'
                     } onClick={this.handleMaskClick.bind(this)}
                       style={{ ...styles }} >
@@ -235,11 +233,14 @@ export default class Contents extends React.Component<Props, State> {
                         <div>{showItem.title}</div>
                         <div>{showItem.description}</div>
                       </div>
-                    </div>
-                  ) : () => null
-                }
-              </Transition>
+                    </animated.div>
+                  )
+                  }
+                </Spring>
+              ) : null
+              }
             </div>
+
           )
         }
       </Spring>
