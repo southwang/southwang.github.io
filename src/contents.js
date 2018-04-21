@@ -211,7 +211,7 @@ export default class Contents extends React.Component<Props, State> {
               {show ? (
                 <Spring from={{ opacity: 0 }}
                   to={{ opacity: 1 }} native
-                  config={{ tension: 5, friction: 10 }}>
+                  config={{ tension: 75, friction: 10 }}>
                   {styles => (
                     <animated.div className={
                       'show-pic full flex-column flex-v-center t3d'
