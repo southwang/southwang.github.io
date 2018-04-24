@@ -10,8 +10,8 @@ var config = {
   // 页面头部设定
   "sight": {
     "bannerImage": [
-      "http://wx3.sinaimg.cn/large/65f02d4egy1fq0xx9v7t6j21hc0lek9t.jpg",
-      "http://wx4.sinaimg.cn/large/65f02d4egy1fq6wail9vjj20xc0fmx08.jpg",
+      "https://wx3.sinaimg.cn/large/65f02d4egy1fq0xx9v7t6j21hc0lek9t.jpg",
+      "https://wx4.sinaimg.cn/large/65f02d4egy1fq6wail9vjj20xc0fmx08.jpg",
     ],
     "title": [
       title1,
@@ -20,7 +20,7 @@ var config = {
   },
   // 页面主体
   "contents": {
-    "backgroundImage": "http://wx2.sinaimg.cn/large/65f02d4egy1fpzuimr623j21hc1ree21.jpg",
+    "backgroundImage": "https://wx2.sinaimg.cn/large/65f02d4egy1fpzuimr623j21hc1ree21.jpg",
     "projectFooterImage": "https://wx3.sinaimg.cn/large/65f02d4egy1fqcdjpjmsij20ca04fwg2.jpg",
   },
   // 页面脚部
